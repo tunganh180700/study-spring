@@ -14,6 +14,9 @@ public class ToDoItem {
     private String description;
     private int statusId;
 
+    public ToDoItem() {
+    }
+
     public ToDoItem(int id, String plan, String description, int statusId) {
         this.id = id;
         this.plan = plan;
