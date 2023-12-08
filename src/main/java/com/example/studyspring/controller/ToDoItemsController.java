@@ -19,6 +19,6 @@ public class ToDoItemsController {
     TodoRepository todoRepository;
     @GetMapping("/")
     public ResponseEntity<List<ToDoItem>> getAllTodos(){
-        return ResponseEntity.ok(todoService.getAllTodo());
+        return ResponseEntity.ok(todoService.getAllTodo().getBody());
     }
 }

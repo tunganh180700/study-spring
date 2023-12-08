@@ -3,6 +3,7 @@ package com.example.studyspring.services;
 import com.example.studyspring.models.ToDoItem;
 import com.example.studyspring.repositories.TodoRepository;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,11 +16,11 @@ public class TodoService {
         this.todoRepository = todoRepository;
     }
 
-    public List<ToDoItem> getAllTodo(){
+    public ResponseEntity<List<ToDoItem>> getAllTodo(){
         List<ToDoItem> list = todoRepository.getAllTodo();
         if(list.isEmpty()){
-            return HttpStatus.NO_CONTENT;
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return list;
+        return new ResponseEntity<>(list, HttpStatus.OK);
     }
 }

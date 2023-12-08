@@ -1,58 +1,29 @@
 package com.example.studyspring.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Table(name = "TODO_LIST")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class ToDoItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true)
     private int id;
+
+    @Column(name = "plan")
     private String plan;
+
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "status_id")
     private int statusId;
-
-    public ToDoItem() {
-    }
-
-    public ToDoItem(int id, String plan, String description, int statusId) {
-        this.id = id;
-        this.plan = plan;
-        this.description = description;
-        this.statusId = statusId;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getPlan() {
-        return plan;
-    }
-
-    public void setPlan(String plan) {
-        this.plan = plan;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public int getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(int statusId) {
-        this.statusId = statusId;
-    }
 }
