@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TodoService {
@@ -24,6 +25,15 @@ public class TodoService {
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
+    public ResponseEntity<ToDoItem> searchById(int id){
+        ToDoItem td = todoRepository.searchByID(id);
+        if(td == null){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        td.setDescription("vvvvvvvvvvvvvvvvvLLLLL");
+        return new ResponseEntity<>(todoRepository.save(td), HttpStatus.OK);
+    }
+
     public ResponseEntity<?> add(){
         ToDoItem toDoItem = new ToDoItem();
         toDoItem.setPlan("An cut");
@@ -32,13 +42,16 @@ public class TodoService {
         return new ResponseEntity<>(todoRepository.save(toDoItem), HttpStatus.OK);
     }
 
-    public ResponseEntity<?> update(int id){
-        ToDoItem toDoItem = todoRepository.findById(id).orElse(null);
-        if(toDoItem != null){
-            toDoItem.setStatusId(1);
-            return new ResponseEntity<>(todoRepository.save(toDoItem), HttpStatus.OK);
-        }else{
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-    }
+//    public ResponseEntity<?> update(int id){
+//        ToDoItem toDoItem = todoRepository.searchByID(id);
+////        if(toDoItem != null){
+////            toDoItem.setStatusId(1);
+////            return new ResponseEntity<>(todoRepository.save(toDoItem), HttpStatus.OK);
+////        }else{
+////            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+////        }
+//        return null;
+//    }
 }
+
+

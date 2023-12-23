@@ -20,14 +20,19 @@ public class ToDoItemsController {
         return ResponseEntity.ok(todoService.getAllTodo().getBody());
     }
 
+    @GetMapping("/aaa")
+    public ResponseEntity<ToDoItem> searchById(){
+        return ResponseEntity.ok(todoService.searchById(1).getBody());
+    }
+
     @PostMapping("/add")
     public ResponseEntity<?> add(){
         return ResponseEntity.ok(todoService.add());
     }
 
-    @PutMapping("/update")
+    @PostMapping("/update")
     public ResponseEntity<?> update(@RequestBody ToDoItem toDoItem){
 //        todoService.update(toDoItem.getId());
-        return ResponseEntity.ok(todoService.update(toDoItem.getStatusId()));
+        return ResponseEntity.ok(todoService.searchById(toDoItem.getId()));
     }
 }
