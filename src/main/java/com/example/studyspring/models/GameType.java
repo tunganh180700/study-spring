@@ -7,17 +7,17 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "STATUS")
-@AllArgsConstructor
+@Table(name = "game_type_tbl")
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
-public class Status {
+public class GameType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "status_id", unique = true)
-    private int status_id;
+    @Column(name = "game_type_id")
+    private int game_type_id;
 
-    @Column(name = "status", unique = true)
-    private String status;
+    @Column(name = "game_type")
+    private String game_type;
 }

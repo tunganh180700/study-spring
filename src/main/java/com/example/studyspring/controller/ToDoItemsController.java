@@ -1,6 +1,5 @@
 package com.example.studyspring.controller;
 
-import com.example.studyspring.models.ToDoItem;
 import com.example.studyspring.services.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
