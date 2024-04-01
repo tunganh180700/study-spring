@@ -25,4 +25,16 @@ public class GameController {
     public GameList addGame(@RequestBody GameList gameList){
         return gameService.addGame(gameList);
     }
+
+    @DeleteMapping("/delete/{game_id}")
+    @ResponseBody
+    public String deleteGame(@PathVariable("game_id") int game_id){
+        gameService.deleteGame(game_id);
+        return "Delete Successfully";
+    }
+
+    @PutMapping("update/{game_id}")
+    public GameList updateGame(RequestBody GameList game, @PathVariable("game_id") int game_id){
+        return gameService.updateGame(game, game_id);
+    }
 }

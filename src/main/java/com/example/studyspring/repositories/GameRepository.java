@@ -12,4 +12,5 @@ import java.util.List;
 public interface GameRepository extends JpaRepository<GameList, Integer> {
     @Query("SELECT g FROM GameList g")
     List<GameList> getAllGames();
+
 }
