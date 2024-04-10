@@ -36,6 +36,12 @@ public class GameService {
         if (Objects.nonNull(game.getGame_name()) && !"".equalsIgnoreCase(game.getGame_name())) {
             gamedb.setGame_name(game.getGame_name());
         }
+        if(game.getGame_type_id() != 0){
+            gamedb.setGame_type_id(game.getGame_type_id());
+        }
+        if(game.getPublisher_id() != 0){
+            gamedb.setPublisher_id(game.getPublisher_id());
+        }
         return gameRepository.save(gamedb);
     }
 }
