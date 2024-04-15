@@ -32,12 +32,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         final String authHeader = request.getHeader("Authorization");
         final String jwt;
         final String username;
-        if (StringUtils.isEmpty(authHeader) || !StringUtils.startsWithIgnoreCase(authHeader, "Bearer")) {
+        if (StringUtils.isEmpty(authHeader) || !StringUtils.startsWithIgnoreCase(authHeader, "Bearer ")) {
             filterChain.doFilter(request, response);
-//            return;
+            return;
         }
         jwt = authHeader.substring(7);
-        log.debug("JWT - {}", jwt.toString());
+        log.debug("JWT - {}", jwt);
         username = jwtService.extractUserName(jwt);
         if (StringUtils.isEmpty(username) && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = userService.userDetailsService().loadUserByUsername(username);
@@ -52,4 +52,21 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
         filterChain.doFilter(request, response);
     }
+//        try {
+//            String jwt = getJwrFromRequest(request);
+//            if (StringUtils.hasText(jwt) && jwtService.extractUserName(jwt)) {
+//                Long
+//            }
+//        } catch (Exception ex) {
+//
+//        }
+//    }
+//
+//    private String getJwrFromRequest(HttpServletRequest request) {
+//        String bearer = request.getHeader("Authorization");
+//        if (StringUtils.hasText(bearer) && bearer.startsWith("Bearer ")) {
+//            return bearer.substring(7, bearer.length());
+//        }
+//        return null;
+//    }
 }
