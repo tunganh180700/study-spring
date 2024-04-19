@@ -7,11 +7,8 @@ import com.example.studyspring.models.Role;
 import com.example.studyspring.models.User;
 import com.example.studyspring.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,6 +17,10 @@ public class AuthenticationService {
     private final UserRepository userRepository;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+
+//    public JwtAuthenticationResponse getUser(){
+//        User user = User
+//    }
 
     public JwtAuthenticationResponse register(RegisterRequest registerRequest) {
         var user = User
@@ -34,7 +35,11 @@ public class AuthenticationService {
 
         user = userRepository.save(user);
         var jwt = jwtService.generateToken(user);
-        return JwtAuthenticationResponse.builder().token(jwt).role(String.valueOf(Role.USER)).build();
+        return JwtAuthenticationResponse.
+                builder().
+                token(jwt).
+                role(String.valueOf(Role.USER)).
+                build();
     }
 
     public JwtAuthenticationResponse login(LoginRequest loginRequest) {
