@@ -30,7 +30,6 @@ public class AuthenticationController {
     public ResponseEntity<?> getUser(@RequestHeader(name = HttpHeaders.AUTHORIZATION) String authHeader) {
         String token = jwtService.extractTokenFromAuthorizationHeader(authHeader);
         Map<String, Object> response = new HashMap<>();
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (token != null) {
             String username = jwtService.extractUserName(token);
             Optional<User> user = userRepository.findByUsername(username);

@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/game")
+@CrossOrigin(origins = "*")
 public class GameController {
     @Autowired
     private GameService gameService;
