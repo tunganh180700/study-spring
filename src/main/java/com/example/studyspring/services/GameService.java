@@ -1,5 +1,6 @@
 package com.example.studyspring.services;
 
+import com.example.studyspring.dto.GameDto;
 import com.example.studyspring.models.GameList;
 import com.example.studyspring.repositories.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,9 @@ public class GameService {
     @Autowired
     private GameRepository gameRepository;
 
-    public ResponseEntity<List<GameList>> getAllGames() {
-        List<GameList> games = gameRepository.getAllGames();
+    public ResponseEntity<List<GameDto.InfoGameList>> getAllGames() {
+        List<GameDto.InfoGameList> games = gameRepository.getAllGames();
+        System.out.println(games);
         if (games.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

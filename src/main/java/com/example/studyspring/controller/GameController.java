@@ -1,5 +1,6 @@
 package com.example.studyspring.controller;
 
+import com.example.studyspring.dto.GameDto;
 import com.example.studyspring.models.GameList;
 import com.example.studyspring.services.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class GameController {
     private GameService gameService;
 
     @GetMapping("/")
-    public ResponseEntity<List<GameList>> getAllGames() {
+    public ResponseEntity<List<GameDto.InfoGameList>> getAllGames() {
         return ResponseEntity.ok(gameService.getAllGames().getBody());
     }
 
