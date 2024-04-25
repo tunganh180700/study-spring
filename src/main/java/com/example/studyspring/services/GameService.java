@@ -16,8 +16,8 @@ public class GameService {
     @Autowired
     private GameRepository gameRepository;
 
-    public ResponseEntity<List<GameDto.InfoGameList>> getAllGames() {
-        List<GameDto.InfoGameList> games = gameRepository.getAllGames();
+    public ResponseEntity<List<GameDto>> getAllGames() {
+        List<GameDto> games = gameRepository.getAllGames();
         System.out.println(games);
         if (games.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

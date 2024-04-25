@@ -18,7 +18,7 @@ public class GameController {
     private GameService gameService;
 
     @GetMapping("/")
-    public ResponseEntity<List<GameDto.InfoGameList>> getAllGames() {
+    public ResponseEntity<List<GameDto>> getAllGames() {
         return ResponseEntity.ok(gameService.getAllGames().getBody());
     }
 
