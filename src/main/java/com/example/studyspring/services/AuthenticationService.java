@@ -18,10 +18,6 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-//    public JwtAuthenticationResponse getUser(){
-//        User user = User
-//    }
-
     public JwtAuthenticationResponse register(RegisterRequest registerRequest) {
         var user = User
                 .builder()

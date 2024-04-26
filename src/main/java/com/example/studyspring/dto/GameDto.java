@@ -10,11 +10,4 @@ public class GameDto {
     String game_name;
     String game_type;
     String publisher_name;
-
-//    public interface InfoGameList{
-//        int game_id();
-//        String game_name();
-//        String game_type();
-//        String publisher_name();
-//    }
 }

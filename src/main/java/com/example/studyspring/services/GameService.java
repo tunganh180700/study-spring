@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class GameService {
@@ -18,11 +19,14 @@ public class GameService {
 
     public ResponseEntity<List<GameDto>> getAllGames() {
         List<GameDto> games = gameRepository.getAllGames();
-        System.out.println(games);
         if (games.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(games, HttpStatus.OK);
+    }
+
+    public Optional<GameList> findByGameId(int game_id) {
+        return gameRepository.findById(game_id);
     }
 
     public GameList addGame(GameList gameList) {
