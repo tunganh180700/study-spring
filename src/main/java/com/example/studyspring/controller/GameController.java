@@ -52,7 +52,7 @@ public class GameController {
         return "Delete Successfully";
     }
 
-    @PutMapping("update/{game_id}")
+    @PutMapping("/update/{game_id}")
     public GameList updateGame(@RequestBody GameList game, @PathVariable("game_id") int game_id) {
         return gameService.updateGame(game, game_id);
     }
