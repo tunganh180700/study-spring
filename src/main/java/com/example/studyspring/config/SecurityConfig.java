@@ -50,6 +50,7 @@ public class SecurityConfig {
                                 "/api/game/**", "/api/game-type/",
                                 "/api/publisher/").permitAll()
                         .requestMatchers(HttpMethod.PUT,"/api/game/**").permitAll()
+                        .requestMatchers(HttpMethod.DELETE,"/api/game/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .authenticationProvider(authenticationProvider()).addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
